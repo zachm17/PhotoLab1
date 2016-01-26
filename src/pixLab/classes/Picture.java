@@ -99,6 +99,19 @@ public class Picture extends SimplePicture
     }
   }
   
+  public void keepOnlyBlue()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    for (Pixel[] rowArray : pixels)
+    {
+      for (Pixel pixelObj : rowArray)
+      {
+        pixelObj.setRed(0);
+        pixelObj.setGreen(0);
+      }
+    }
+  }
+  
   
   public void zeroRed()
   {
@@ -111,6 +124,53 @@ public class Picture extends SimplePicture
 			  currentPixel.setRed(0);
 			  
 			  original[row][col].setRed(0);
+		  }
+	  }
+  }
+  
+  public void keepOnlyRed()
+  {
+	  Pixel[][] original = this.getPixels2D();
+	  for(int row = 0; row < original.length; row++)
+	  {
+		  for(int col = 0; col < original[0].length; col++)
+		  {
+			  Pixel currentPixel = original[row][col];
+			  currentPixel.setRed(0);
+			  
+			  original[row][col].setBlue(0);
+			  original[row][col].setGreen(0);
+		  }
+	  }
+  }
+  
+  public void zeroGreen()
+  {
+	  Pixel[][] original = this.getPixels2D();
+	  for(int row = 0; row < original.length; row++)
+	  {
+		  for(int col = 0; col < original[0].length; col++)
+		  {
+			  Pixel currentPixel = original[row][col];
+			  currentPixel.setRed(0);
+			  
+			  original[row][col].setGreen(0);
+		  }
+	  }
+  }
+  
+  public void keepOnlyGreen()
+  {
+	  Pixel[][] original = this.getPixels2D();
+	  for(int row = 0; row < original.length; row++)
+	  {
+		  for(int col = 0; col < original[0].length; col++)
+		  {
+			  Pixel currentPixel = original[row][col];
+			  currentPixel.setRed(0);
+			  
+			  original[row][col].setRed(0);
+			  original[row][col].setBlue(0);
 		  }
 	  }
   }
@@ -132,6 +192,40 @@ public class Picture extends SimplePicture
       {
         leftPixel = pixels[row][col];
         rightPixel = pixels[row][width - 1 - col];
+        rightPixel.setColor(leftPixel.getColor());
+      }
+    } 
+  }
+  
+  public void mirrorHorizontal()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    Pixel leftPixel = null;
+    Pixel rightPixel = null;
+    int width = pixels[0].length;
+    for (int row = 0; row < pixels.length; row++)
+    {
+      for (int col = 0; col < width / 2; col++)
+      {
+        leftPixel = pixels[row][col];
+        rightPixel = pixels[row][width - 1 - col];
+        rightPixel.setColor(leftPixel.getColor());
+      }
+    } 
+  }
+  
+  public void mirrorVerticalRightToLeft()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    Pixel leftPixel = null;
+    Pixel rightPixel = null;
+    int width = pixels[0].length;
+    for (int row = 0; row < pixels.length; row++)
+    {
+      for (int col = 0; col < width / 2; col++)
+      {
+        rightPixel = pixels[row][col];
+        leftPixel = pixels[row][width - 1 - col];
         rightPixel.setColor(leftPixel.getColor());
       }
     } 
@@ -242,11 +336,15 @@ public class Picture extends SimplePicture
    */
   public static void main(String[] args) 
   {
-    Picture beach = new Picture("blue-mark.jpg");
+    Picture beach = new Picture("KatieFancy.jpg");
     beach.explore();
-    beach.mirrorVertical();
-    beach.zeroBlue();
+    beach.mirrorHorizontal();
+    beach.keepOnlyBlue();
+   // beach.keepOnlyRed();
+   // beach.keepOnlyGreen();
     beach.explore();
+    beach.write("OnlyGreenBeach.jpg");
+    
     
   }
   
