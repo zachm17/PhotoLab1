@@ -175,6 +175,24 @@ public class Picture extends SimplePicture
 	  }
   }
   
+  public void grayScale()
+  {
+	  Pixel[][] original = this.getPixels2D();
+	  for(int row = 0; row < original.length; row++)
+	  {
+		  for(int col = 0; col < original[0].length; col++)
+		  {
+			  Pixel currentPixel = original[row][col];
+			  currentPixel.setRed(0);
+			  
+			  original[row][col].setRed(128);
+			  original[row][col].setGreen(128);
+			  original[row][col].setBlue(128);
+		  }
+	  }
+  }
+  
+  
   
   
   /** Method that mirrors the picture around a 
@@ -222,7 +240,7 @@ public class Picture extends SimplePicture
     int width = pixels[0].length;
     for (int row = 0; row < pixels.length; row++)
     {
-      for (int col = 0; col < width / 2; col++)
+      for (int col = pixels[0].length - 1; col> width / 2; col--)
       {
         rightPixel = pixels[row][col];
         leftPixel = pixels[row][width - 1 - col];
