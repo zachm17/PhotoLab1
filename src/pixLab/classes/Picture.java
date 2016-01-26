@@ -232,6 +232,26 @@ public class Picture extends SimplePicture
     } 
   }
   
+  public void randomColor()
+  {
+	  Pixel[][] pixels = this.getPixels2D();
+	  for(Pixel [] row : pixels)
+	  {
+		  for(Pixel currentPixel : row)
+		  {
+			   int randomRed, randomBlue, randomGreen;
+			   randomRed = (int)(Math.random() * 256);
+			   randomGreen = (int)(Math.random() * 256);
+			   randomBlue = (int)(Math.random() * 256);
+			   
+			   currentPixel.setBlue(randomBlue);
+			   currentPixel.setRed(randomRed);
+			   currentPixel.setGreen(randomGreen);
+		  }
+	  }
+  }
+  
+  
   public void mirrorVerticalRightToLeft()
   {
     Pixel[][] pixels = this.getPixels2D();
@@ -243,7 +263,7 @@ public class Picture extends SimplePicture
       for (int col = pixels[0].length - 1; col> width / 2; col--)
       {
         rightPixel = pixels[row][col];
-        leftPixel = pixels[row][width - 1 - col];
+        leftPixel = pixels[row][width - 1 - col]; //(width/2) - (col-pictureWidth/2)];
         rightPixel.setColor(leftPixel.getColor());
       }
     } 
@@ -360,6 +380,7 @@ public class Picture extends SimplePicture
     beach.keepOnlyBlue();
    // beach.keepOnlyRed();
    // beach.keepOnlyGreen();
+    beach.randomColor();
     beach.explore();
     beach.write("OnlyGreenBeach.jpg");
     
