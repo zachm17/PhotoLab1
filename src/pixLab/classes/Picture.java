@@ -175,21 +175,20 @@ public class Picture extends SimplePicture
 	  }
   }
   
-  public void grayScale()
+  public void Grayscale()
   {
-	  Pixel[][] original = this.getPixels2D();
-	  for(int row = 0; row < original.length; row++)
+	  Pixel[][]pixels = this.getPixels2D();
+	  for(Pixel[] rowArray : pixels)
 	  {
-		  for(int col = 0; col < original[0].length; col++)
+		  for(Pixel pixelObj : rowArray)
 		  {
-			  Pixel currentPixel = original[row][col];
-			  currentPixel.setRed(0);
-			  
-			  original[row][col].setRed(128);
-			  original[row][col].setGreen(128);
-			  original[row][col].setBlue(128);
+			  int averagePixColor = (pixelObj.getBlue()+pixelObj.getRed()+pixelObj.getGreen())/3;
+			  pixelObj.setRed(averagePixColor);
+			  pixelObj.setGreen(averagePixColor);
+			  pixelObj.setBlue(averagePixColor);
+			 
 		  }
-	  }
+	  } 
   }
   
   
@@ -215,22 +214,40 @@ public class Picture extends SimplePicture
     } 
   }
   
-  public void mirrorHorizontal()
+  public void MirrorHorizontal()
   {
-    Pixel[][] pixels = this.getPixels2D();
-    Pixel leftPixel = null;
-    Pixel rightPixel = null;
-    int width = pixels[0].length;
-    for (int row = 0; row < pixels.length; row++)
-    {
-      for (int col = 0; col < width / 2; col++)
-      {
-        leftPixel = pixels[row][col];
-        rightPixel = pixels[row][width - 1 - col];
-        rightPixel.setColor(leftPixel.getColor());
-      }
-    } 
+ 	  Pixel[][] pixels = this.getPixels2D();
+ 	  Pixel topPixel = null;
+ 	  Pixel bottomPixel = null;
+ 	  int width = pixels[0].length;
+ 	  for (int row = 0; row < pixels.length / 2 - 1; row++)
+ 	  {
+ 		  for (int col = 0; col < width - 1; col++)
+ 		  {
+ 			  topPixel = pixels[row][col];
+ 			  bottomPixel = pixels[pixels.length - 1 - row][col];
+ 			  bottomPixel .setColor(topPixel.getColor());
+ 		  }
+ 	  }
   }
+  
+  public void mirrorHorizontalBottomToTop()
+  {
+	  Pixel[][] pixels = this.getPixels2D();
+	  Pixel topPixel = null;
+	  Pixel bottomPixel = null;
+	  int width = pixels[0].length;
+	  for (int row = pixels.length / 2 - 1; row < pixels.length; row++ )
+	  {
+		  for (int col = 0; col < width - 1; col++)
+		  {
+			  topPixel = pixels[row][col];
+			  bottomPixel = pixels[pixels.length - 1 - row][col];
+			  bottomPixel .setColor(topPixel.getColor());
+		  }
+	  }
+  }
+  
   
   public void randomColor()
   {
@@ -291,6 +308,78 @@ public class Picture extends SimplePicture
         rightPixel.setColor(leftPixel.getColor());
       }
     }
+  }
+  
+  public void MirrorArms()
+  {
+	int mirrorPoint = 194;
+	
+	Pixel topPixel = null;
+	Pixel bottomPixel = null;
+	
+	int count = 0;
+	Pixel[][] pixels = this.getPixels2D();
+	
+	
+	for(int row = 163; row < 200; row++)
+	{
+		for (int col = 100; col < 300; col++)
+		{
+			topPixel = pixels[row][col];
+			bottomPixel = pixels[mirrorPoint - row + mirrorPoint][col];
+			bottomPixel.setColor(topPixel.getColor());
+				
+			
+		}
+	}
+  }
+  
+  public void MirrorGull()
+  {
+	  int mirrorPoint = 194;
+	  
+	  Pixel leftPixel = null;
+	  Pixel rightPixel = null;
+	  
+	  int count = 0;
+	Pixel[][] pixels = this.getPixels2D();
+		
+		for(int row = 230; row < 325; row++)
+		{
+			for(int col = 230; col < 350; col++)
+			{
+				leftPixel = pixels[row][col];      
+		        rightPixel = pixels[row][mirrorPoint - col + mirrorPoint];
+		        rightPixel.setColor(leftPixel.getColor());
+			}
+		}
+  }
+  
+  
+  public void FixUnderwater()
+  {
+	  Pixel[][]pixels = this.getPixels2D();
+	  for(Pixel[] rowArray : pixels)
+	  {
+		  for(Pixel pixelObj : rowArray)
+		  {
+			  pixelObj.setRed(pixelObj.getRed()+125);
+		  }
+	  }
+  }
+  
+  public void Negate()
+  {
+	  Pixel[][]pixels = this.getPixels2D();
+	  for(Pixel[] rowArray : pixels)
+	  {
+		  for(Pixel pixelObj : rowArray)
+		  {
+			  pixelObj.setRed(255 - pixelObj.getRed());
+			  pixelObj.setBlue(255 - pixelObj.getBlue());
+			  pixelObj.setGreen(255 - pixelObj.getGreen());
+		  }
+	  }
   }
   
   /** copy from the passed fromPic to the
@@ -376,11 +465,14 @@ public class Picture extends SimplePicture
   {
     Picture beach = new Picture("KatieFancy.jpg");
     beach.explore();
-    beach.mirrorHorizontal();
-    beach.keepOnlyBlue();
+    beach.MirrorHorizontal();
+    beach.zeroBlue();
+    beach.zeroRed();
+    beach.keepOnlyGreen();
    // beach.keepOnlyRed();
-   // beach.keepOnlyGreen();
-    beach.randomColor();
+  //  beach.keepOnlyGreen();
+    beach.mirrorVertical();
+   // beach.randomColor();
     beach.explore();
     beach.write("OnlyGreenBeach.jpg");
     
