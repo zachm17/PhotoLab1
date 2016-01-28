@@ -287,7 +287,7 @@ public class Picture extends SimplePicture
   }
   
   /** Mirror just part of a picture of a temple */
-  public void mirrorTemple()
+  public void MirrorTemple()
   {
     int mirrorPoint = 276;
     Pixel leftPixel = null;
@@ -313,7 +313,6 @@ public class Picture extends SimplePicture
   public void MirrorArms()
   {
 	int mirrorPoint = 194;
-	
 	Pixel topPixel = null;
 	Pixel bottomPixel = null;
 	
@@ -463,16 +462,10 @@ public class Picture extends SimplePicture
    */
   public static void main(String[] args) 
   {
-    Picture beach = new Picture("KatieFancy.jpg");
+    Picture beach = new Picture("snowman.jpg");
     beach.explore();
-    beach.MirrorHorizontal();
-    beach.zeroBlue();
-    beach.zeroRed();
-    beach.keepOnlyGreen();
-   // beach.keepOnlyRed();
-  //  beach.keepOnlyGreen();
-    beach.mirrorVertical();
-   // beach.randomColor();
+    beach.MirrorArms();
+   
     beach.explore();
     beach.write("OnlyGreenBeach.jpg");
     

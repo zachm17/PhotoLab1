@@ -48,8 +48,48 @@ public class PictureTester
   {
     Picture temple = new Picture("temple.jpg");
     temple.explore();
-    temple.mirrorTemple();
+    temple.MirrorTemple();
     temple.explore();
+  }
+  
+  public static void testMirrorArms()
+  {
+	  Picture snowman = new Picture("snowman.jpg");
+	  snowman.explore();
+	  snowman.MirrorArms();
+	  snowman.explore();
+  }
+  
+  public static void testKeepOnlyBlue()
+  {
+	  Picture beach = new Picture("beach.jpg");
+	  beach.explore();
+	  beach.keepOnlyBlue();
+	  beach.explore();
+  }
+  
+  public static void testKeepOnlyRed()
+  {
+	  Picture beach = new Picture("beach.jpg");
+	  beach.explore();
+	  beach.keepOnlyRed();
+	  beach.explore();
+  }
+  
+  public static void testKeepOnlyGreen()
+  {
+	  Picture beach = new Picture("beach.jpg");
+	  beach.explore();
+	  beach.keepOnlyGreen();
+	  beach.explore();
+  }
+  
+  public static void testMirrorGull()
+  {
+	  Picture seagull = new Picture("seagull.jpg");
+	  seagull.explore();
+	  seagull.MirrorGull();
+	  seagull.explore();
   }
   
   /** Method to test the collage method */
@@ -76,18 +116,18 @@ public class PictureTester
     // and comment out the ones you don't want
     // to run
     testZeroBlue();
-    //testKeepOnlyBlue();
-    //testKeepOnlyRed();
-    //testKeepOnlyGreen();
+    testKeepOnlyBlue();
+    testKeepOnlyRed();
+    testKeepOnlyGreen();
     //testNegate();
     //testGrayscale();
     //testFixUnderwater();
     testMirrorVertical();
     testMirrorVerticalRightToLeft();
     testRandomColor();
-    //testMirrorTemple();
-    //testMirrorArms();
-    //testMirrorGull();
+    testMirrorTemple();
+    testMirrorArms();
+    testMirrorGull();
     //testMirrorDiagonal();
     //testCollage();
     //testCopy();
