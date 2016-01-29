@@ -92,6 +92,38 @@ public class PictureTester
 	  seagull.explore();
   }
   
+  public static void testNegate()
+  {
+	  Picture beach = new Picture("beach.jpg");
+	  beach.explore();
+	  beach.Negate();
+	  beach.explore();
+  }
+  
+  public static void testGrayscale()
+  {
+	  Picture beach = new Picture("beach.jpg");
+	  beach.explore();
+	  beach.Grayscale();
+	  beach.explore();
+  }
+  
+  public static void testFixUnderwater()
+  {
+	  Picture water = new Picture("water.jpg");
+	  water.explore();
+	  water.FixUnderwater();
+	  water.explore();
+  }
+  
+  public static void testMirrorDiagonal()
+  {
+	  Picture seagull = new Picture("seagull.jpg");
+	  seagull.explore();
+	  seagull.mirrorDiagonal();
+	  seagull.explore();
+  }
+  
   /** Method to test the collage method */
   public static void testCollage()
   {
@@ -119,17 +151,17 @@ public class PictureTester
     testKeepOnlyBlue();
     testKeepOnlyRed();
     testKeepOnlyGreen();
-    //testNegate();
-    //testGrayscale();
-    //testFixUnderwater();
+    testNegate();
+    testGrayscale();
+    testFixUnderwater();
     testMirrorVertical();
     testMirrorVerticalRightToLeft();
     testRandomColor();
     testMirrorTemple();
     testMirrorArms();
     testMirrorGull();
-    //testMirrorDiagonal();
-    //testCollage();
+    testMirrorDiagonal();
+    testCollage();
     //testCopy();
     //testEdgeDetection();
     //testEdgeDetection2();
