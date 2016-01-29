@@ -404,6 +404,8 @@ public class Picture extends SimplePicture
 			 
   }
   
+  //still need to add "copy" method and "edgeDetection2" method
+  
   /** copy from the passed fromPic to the
     * specified startRow and startCol in the
     * current picture
