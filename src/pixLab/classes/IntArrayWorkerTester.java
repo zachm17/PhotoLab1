@@ -29,7 +29,7 @@ public static void testGetCount()
    int[][] nums = new int[3][4];
    worker.setMatrix(nums);
    worker.fillPattern1();
-   int count = worker.getCount();
+   int count = worker.getCount(1);
    System.out.println("Count should be 6 and count is " + count);
    }
   
@@ -79,27 +79,27 @@ public static void testGetCount()
   }
   
   /** Method to test getColTotal */
-//  public static void testGetColTotal()
-//  {
-//    IntArrayWorker worker = new IntArrayWorker();
-//    int [][] nums2 = {{1, 2, 3}, {4, 5, 6}};
-//    worker.setMatrix(nums2);
-//    int total = worker.getColTotal(0);
-//    System.out.println("Total for column 0 should be 5 and is " + total);
-//    total = worker.getColTotal(1);
-//    System.out.println("Total for column 1 should be 7 and is " + total);
-//    total = worker.getColTotal(2);
-//    System.out.println("Total for column 2 should be 9 and is " + total);
-//  }
+  public static void testGetColTotal()
+  {
+    IntArrayWorker worker = new IntArrayWorker();
+    int [][] nums2 = {{1, 2, 3}, {4, 5, 6}};
+    worker.setMatrix(nums2);
+    int total = worker.getColTotal(0);
+    System.out.println("Total for column 0 should be 5 and is " + total);
+    total = worker.getColTotal(1);
+    System.out.println("Total for column 1 should be 7 and is " + total);
+    total = worker.getColTotal(2);
+    System.out.println("Total for column 2 should be 9 and is " + total);
+  }
   
   public static void main(String[] args)
   {
     testSetMatrix();
     testFillPattern1();
-    //testGetCount(); 
+    testGetCount(); 
     testGetTotal();
     testGetTotalNested();
-    //testGetLargest();
-    //testGetColTotal();
+    testGetLargest();
+    testGetColTotal();
   }
 }

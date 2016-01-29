@@ -46,25 +46,74 @@ public class IntArrayWorker
     return total;
   }
   
-  public int getCount()
-  {
-	  int count = 0;
-	    for (int row = 0; row < matrix.length; row++)
-	    {
-	      for (int col = 0; col < matrix[0].length; col++)
-	      {
-	        count = count + matrix[row][col];
-	        if (matrix[row][col] == 1)
-	        {
-	        	count = count + 1;
-	        }
-	        		
-	        	
-	        		
-	      }
-	    }
-	    return count;
-	  }
+  public int getCount(int searchValue)
+	 {
+		 int countTotal = 0;
+		 for(int row = 0; row < matrix.length; row++)
+		 {
+			 for(int col = 0; col < matrix[0].length; col++)
+			 {
+				 if(countTotal == searchValue)
+				 {
+					 countTotal++;
+				 }
+			 }
+		 }
+		 
+		 countTotal = 0;
+		 
+		 for(int [] row : matrix)
+		 {
+			 for(int spot : row)
+			 {
+				 if(spot == searchValue)
+				 {
+					 countTotal++;
+				 }
+			 }
+		 }
+		 
+		 return countTotal;
+	 }
+  
+  public int getLargest()
+	{
+		int largestSoFar = Integer.MIN_VALUE;
+		 for(int [] row : matrix)
+		 {
+			 for(int spot : row)
+			 {
+				 if(spot >= largestSoFar)
+				 {
+					 largestSoFar = spot;
+				 }
+			 }
+		 }
+		
+		for(int row = 0; row < matrix.length; row++)
+		{
+			for (int col = 0; col < matrix.length; col++)
+			{
+				if(matrix[row][col] > largestSoFar)
+				{
+					largestSoFar = matrix[row][col];
+				}
+			}
+		}
+		return largestSoFar;
+		
+	}
+  
+  public int getColTotal(int selectedColumn)
+	{
+		int total = 0;
+		for(int row = 0; row < matrix.length; row++)
+		{
+			total += matrix[row][selectedColumn];
+		}
+		return total;
+	}
+
   
 
   
