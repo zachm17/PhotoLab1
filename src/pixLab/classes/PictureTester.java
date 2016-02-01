@@ -88,7 +88,7 @@ public class PictureTester
   {
 	  Picture seagull = new Picture("seagull.jpg");
 	  seagull.explore();
-	  seagull.MirrorGull();
+	  seagull.mirrorGull();
 	  seagull.explore();
   }
   
@@ -108,11 +108,11 @@ public class PictureTester
 	  beach.explore();
   }
   
-  public static void testFixUnderwater()
+  public static void testfixUnderwater()
   {
 	  Picture water = new Picture("water.jpg");
 	  water.explore();
-	  water.FixUnderwater();
+	  water.fixUnderwater();
 	  water.explore();
   }
   
@@ -153,7 +153,7 @@ public class PictureTester
     testKeepOnlyGreen();
     testNegate();
     testGrayscale();
-    testFixUnderwater();
+    testfixUnderwater();
     testMirrorVertical();
     testMirrorVerticalRightToLeft();
     testRandomColor();

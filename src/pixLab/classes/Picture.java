@@ -92,9 +92,12 @@ public class Picture extends SimplePicture
     Pixel[][] pixels = this.getPixels2D();
     for (Pixel[] rowArray : pixels)
     {
+    	
       for (Pixel pixelObj : rowArray)
       {
+    	 int tempBlue = pixelObj.getBlue();
         pixelObj.setBlue(0);
+        tempBlue= pixelObj.getBlue();
       }
     }
   }
@@ -333,7 +336,7 @@ public class Picture extends SimplePicture
 	}
   }
   
-  public void MirrorGull()
+  public void mirrorGull()
   {
 	  int mirrorPoint = 194;
 	  
@@ -355,7 +358,7 @@ public class Picture extends SimplePicture
   }
   
   
-  public void FixUnderwater()
+  public void fixUnderwater()
   {
 	  Pixel[][]pixels = this.getPixels2D();
 	  for(Pixel[] rowArray : pixels)
@@ -487,10 +490,9 @@ public class Picture extends SimplePicture
    */
   public static void main(String[] args) 
   {
-    Picture beach = new Picture("snowman.jpg");
+    Picture beach = new Picture("seagull.jpg");
     beach.explore();
-    beach.MirrorArms();
-   
+    beach.mirrorGull();
     beach.explore();
     beach.write("OnlyGreenBeach.jpg");
     
