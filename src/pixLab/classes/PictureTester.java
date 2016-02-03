@@ -18,6 +18,23 @@ public class PictureTester
     beach.explore();
   }
   
+  public static void testZeroGreen()
+  {
+    Picture beach = new Picture("beach.jpg");
+    beach.explore();
+    beach.zeroGreen();
+    beach.explore();
+  }
+  
+  public static void testZeroRed()
+  {
+    Picture beach = new Picture("beach.jpg");
+    beach.explore();
+    beach.zeroRed();
+    beach.explore();
+  }
+  
+  
   /** Method to test mirrorVertical */
   public static void testMirrorVertical()
   {
@@ -32,6 +49,22 @@ public class PictureTester
     Picture caterpillar = new Picture("caterpillar.jpg");
     caterpillar.explore();
     caterpillar.mirrorVerticalRightToLeft();
+    caterpillar.explore();
+  }
+  
+  public static void testMirrorHorizontal()
+  {
+    Picture caterpillar = new Picture("caterpillar.jpg");
+    caterpillar.explore();
+    caterpillar.MirrorHorizontal();
+    caterpillar.explore();
+  }
+  
+  public static void testMirrorHorizontalBottomToTop()
+  {
+    Picture caterpillar = new Picture("caterpillar.jpg");
+    caterpillar.explore();
+    caterpillar.mirrorHorizontalBottomToTop();
     caterpillar.explore();
   }
   
@@ -124,6 +157,7 @@ public class PictureTester
 	  seagull.explore();
   }
   
+  
   /** Method to test the collage method */
   public static void testCollage()
   {
@@ -132,11 +166,25 @@ public class PictureTester
     canvas.explore();
   }
   
+ // public static void testCopy()
+  //{
+   // Picture swan = new Picture("swan.jpg");
+   // swan.copy(10);
+   // swan.explore();
+ //}
+  
   /** Method to test edgeDetection */
   public static void testEdgeDetection()
   {
     Picture swan = new Picture("swan.jpg");
     swan.edgeDetection(10);
+    swan.explore();
+  }
+  
+  public static void testEdgeDetection2()
+  {
+    Picture swan = new Picture("swan.jpg");
+    swan.edgeDetection2(10);
     swan.explore();
   }
   
@@ -148,20 +196,24 @@ public class PictureTester
     // and comment out the ones you don't want
     // to run
     testZeroBlue();
+    testZeroGreen();
+    testZeroRed();
     testKeepOnlyBlue();
     testKeepOnlyRed();
     testKeepOnlyGreen();
-    testNegate();
-    testGrayscale();
-    testfixUnderwater();
+  //  testNegate();
+  //  testGrayscale();
+ //   testfixUnderwater();
     testMirrorVertical();
     testMirrorVerticalRightToLeft();
+    testMirrorHorizontal();
+    testMirrorHorizontalBottomToTop();
     testRandomColor();
     testMirrorTemple();
     testMirrorArms();
-    testMirrorGull();
-    testMirrorDiagonal();
-    testCollage();
+  //  testMirrorGull();
+  //  testMirrorDiagonal();
+ //   testCollage();
     //testCopy();
     //testEdgeDetection();
     //testEdgeDetection2();
