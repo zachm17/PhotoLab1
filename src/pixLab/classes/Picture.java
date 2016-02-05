@@ -490,13 +490,13 @@ public class Picture extends SimplePicture
     Pixel topPixel = null;
     Pixel[][] pixels = this.getPixels2D();
     Color rightColor = null;
-    for (int row = 0; row < pixels.length; row++)
+    for (int row = 0; row < pixels.length-1; row++)
     {
       for (int col = 0; 
-           col < pixels[0].length-1; col++)
+           col < pixels[0].length; col++)
       {
         bottomPixel = pixels[row][col];
-        topPixel = pixels[row][col+1];
+        topPixel = pixels[row+1][col];
         rightColor = bottomPixel.getColor();
         if (topPixel.colorDistance(rightColor) > 
             edgeDist)
@@ -517,7 +517,7 @@ public class Picture extends SimplePicture
   {
     Picture beach = new Picture("beach.jpg");
     beach.explore();
-    beach.keepOnlyRed();
+    beach.edgeDetection2(1);
     beach.explore();
     
     
